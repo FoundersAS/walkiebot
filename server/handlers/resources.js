@@ -54,8 +54,8 @@ module.exports = {
       return reply.view('app', {
         initialState: {},
         assets: assets,
-        SLACK_CLIENT_ID: process.env.SLACK_CLIENT_ID,
-        SLACK_LOGIN_REDIRECT_URL: SLACK_LOGIN_REDIRECT_URL
+        SLACK_CLIENT_ID: process.env.SLACK_CLIENT_ID || '',
+        SLACK_LOGIN_REDIRECT_URL: SLACK_LOGIN_REDIRECT_URL || ''
       });
     }
   }

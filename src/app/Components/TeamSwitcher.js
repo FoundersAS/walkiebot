@@ -284,28 +284,29 @@ class TeamSwitcher extends React.Component {
                 <div className='team-switcher__backdrop' onClick={closeTeamAndUserList} />
               </CSSTransitionGroup>
             )}
-            <div
-              onClick={toggleTeamList}
-              className={classNames('team-switcher__link', {
-                'team-switcher__link--active': !isAnonContext && !!meta.botId,
-                'team-switcher__link--open': teamListOpen
-              })}
-              >
-              <ContextAvatar
-                name={meta.signedIn ? meta.team.name : 'Sign in'}
-                url={meta.team.avatar}
-                />
-              <CSSTransitionGroup
-                transitionName='open-bot-switcher-transition'
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}
+            {window.SLACK_CLIENT_ID && (
+              <div
+                onClick={toggleTeamList}
+                className={classNames('team-switcher__link', {
+                  'team-switcher__link--active': !isAnonContext && !!meta.botId,
+                  'team-switcher__link--open': teamListOpen
+                })}
                 >
-                {listOpen && !userListOpen && (
-                  <BotList bots={bots} meta={meta} isAnonList={userListOpen} key={'teamList'} />
-                )}
-              </CSSTransitionGroup>
-
-            </div>
+                <ContextAvatar
+                  name={meta.signedIn ? meta.team.name : 'Sign in'}
+                  url={meta.team.avatar}
+                  />
+                <CSSTransitionGroup
+                  transitionName='open-bot-switcher-transition'
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={300}
+                  >
+                  {listOpen && !userListOpen && (
+                    <BotList bots={bots} meta={meta} isAnonList={userListOpen} key={'teamList'} />
+                  )}
+                </CSSTransitionGroup>
+              </div>
+            )}
             <div
               onClick={toggleUserList}
               className={classNames('team-switcher__link', {

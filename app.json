@@ -6,29 +6,32 @@
   "scripts": {
   },
   "env": {
+    "HEROKU_APP_NAME": {
+      "required": true,
+      "description": "The same value as what you put for 'App name' above"
+    },
     "NODE_ENV": {
-      "required": true
+      "required": true,
+      "value": "production"
     },
     "NPM_CONFIG_PRODUCTION": {
-      "required": true
+      "required": true,
+      "value": "false"
     },
     "JWT_PUBLIC": {
-      "required": true
+      "required": false
     },
     "JWT_SECRET": {
-      "required": true
+      "required": false
     },
     "SLACK_CLIENT_ID": {
-      "required": true
+      "required": false
     },
     "SLACK_CLIENT_SECRET": {
-      "required": true
+      "required": false
     },
     "SLACK_LOGIN_REDIRECT_URL": {
-      "required": true
-    },
-    "HEROKU_APP_NAME": {
-      "required": true
+      "required": false
     }
   },
   "formation": {

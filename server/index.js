@@ -8,7 +8,7 @@ const accessControl = require('./modules/access-control');
 
 const JWT_PUBLIC = process.env.JWT_PUBLIC && process.env.JWT_PUBLIC.replace(/\\n/g, '\n');
 
-if (!JWT_PUBLIC) throw new Error('Missing JWT_PUBLIC environment variable');
+if (!JWT_PUBLIC) console.warn('WARNING: Missing JWT_PUBLIC environment variable - Not setting up authentication');
 
 server.connection({ port: process.env.PORT || 8000 });
 

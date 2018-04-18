@@ -29,8 +29,8 @@ module.exports = {
     new WebpackNotifierPlugin(),
     new HtmlWebpackPlugin({
       template: './dev-index.ejs',
-      SLACK_CLIENT_ID: JSON.stringify(process.env.SLACK_CLIENT_ID),
-      SLACK_LOGIN_REDIRECT_URL: JSON.stringify(process.env.SLACK_LOGIN_REDIRECT_URL)
+      SLACK_CLIENT_ID: JSON.stringify(process.env.SLACK_CLIENT_ID || ''),
+      SLACK_LOGIN_REDIRECT_URL: JSON.stringify(process.env.SLACK_LOGIN_REDIRECT_URL || '')
     }),
     new webpack.NamedModulesPlugin()
   ],
