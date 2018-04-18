@@ -1,0 +1,88 @@
+@import 'colors';
+@import 'layers';
+@import 'typography';
+@import 'animation';
+
+.select {
+  position: relative;
+
+  &__trigger {
+    position: relative;
+  }
+  &__backdrop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: $layer-4;
+  }
+
+  &__options {
+    position: absolute;
+    text-align: left;
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 30px -5px rgba($color-gray-darker, .3);
+
+    @at-root .select--up & {
+      bottom: 100%;
+      top: auto;
+    }
+
+    @at-root .select--right & {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  &__option {
+    z-index: $layer-5;
+    padding: .6rem 1rem .6rem .8rem;
+    min-width: 150px;
+    background-color: $color-white;
+    color: $color-gray-darker;
+
+    font-family: $font-family-base !important;
+    font-weight: $font-normal;
+    font-size: .85rem;
+    display: flex;
+    text-transform: none;
+    align-items: center;
+    position: relative;
+
+
+    &:not(:nth-child(2)) {
+      box-shadow: inset 0 1px 0 0 $color-gray-light;
+    }
+
+    &:before {
+      font-family: 'icomoon' !important;
+      font-weight: normal;
+      font-size: 20px;
+      margin-right: .6rem;
+      margin-left: -.2rem;
+      color: inherit;
+    }
+
+    &:nth-child(2) {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 4px 4px;
+    }
+
+    &:hover {
+      color: $color-green;
+      background-color: $color-gray-lightest;
+      z-index: $layer-6;
+    }
+  }
+
+  &__option-icon {
+    margin-right: .8rem;
+    color: inherit;
+  }
+}

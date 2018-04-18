@@ -1,0 +1,136 @@
+/* @import 'colors';
+@import 'responsive';
+@import 'layers';
+@import 'animation';
+
+$bot-switcher-width: 4rem;
+
+.bot-switcher {
+  position: relative;
+  z-index: $layer-2;
+  flex: 0 0 $bot-switcher-width;
+
+  background-color: darken($color-secondary, 5%);
+  min-width: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__name {
+    margin-top: .2rem;
+
+    width: 2.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: .7rem;
+    text-align: center;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-gray-lighter no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 0 0 2px darken($color-secondary, 5%);
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding-top: .4rem;
+    position: relative;
+
+    transition: box-shadow .2s ease-in-out;
+
+    &.icon-plus {
+      background-color: lighten($color-secondary, 10%);
+      font-size: 1.2rem;
+      padding-top: 0;
+    }
+  }
+
+  &__team-indicator,
+  &__fork-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lighten($color-primary, 10%);
+    border-radius: 2px;
+    font-size: 0.65rem;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__team-indicator {
+    background-color: lighten($color-primary, 10%);
+    left: 0;
+  }
+
+  &__img {
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: .3rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 100%;
+    padding: .6rem 0;
+
+
+    text-decoration: none;
+    font-size: 1.3rem;
+
+    color: #F8F2F7;
+
+    @at-root .bot-switcher__link:focus .bot-switcher__avatar,
+    .bot-switcher__link:hover .bot-switcher__avatar {
+      box-shadow: 0 0 0 3px lighten($color-secondary, 50%);
+    }
+
+    position: relative;
+
+    &--active {
+      &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: .45rem;
+        height: calc(100% - 1.1rem);
+        width: 4px;
+        border-radius: 0 3px 3px 0;
+        background-color: lighten($color-secondary, 50%);
+      }
+    }
+  }
+
+  @media (max-width: $break-point-large) {
+    margin-left: -$bot-switcher-width;
+
+    transition: transform .4s $easing;
+
+    @at-root .show-sidebar .bot-switcher {
+      transform: translateX($bot-switcher-width);
+    }
+
+  }
+}
+ */

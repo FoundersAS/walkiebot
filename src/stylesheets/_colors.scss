@@ -1,0 +1,48 @@
+$color-primary: #ae92ab;
+$color-primary-dark: #73292c;
+$color-primary-light: #ae92ab;
+
+$color-secondary-semi-light: #977994;
+$color-secondary-lighter: #c1acbf;
+$color-secondary-light: #a88aa5;
+$color-secondary: #4D394B; /* Sidebar */
+$color-secondary-dark: #3e2e3d;
+$color-secondary-darker: #30232e; /* Teamswitcher */
+
+$color-accent: #BF55EC;
+
+$color-card: #fff;
+
+$color-default: #ecf0f1;
+$color-danger: #e74c3c;
+$color-good: #27ae60;
+
+$color-text-primary: #2C3E50;
+$color-text-secondary: #6C7A89;
+$color-text-light: #F8F2F7;
+$color-text-meta: #846882;
+
+$color-white: #ffffff;
+$color-gray-lightest: #f7f9f9;
+$color-gray-lighter: #ecf0f1;
+$color-gray-light: #d2dde1;
+$color-gray-medium: #bdc3c7;
+$color-gray-dark: #95a5a6;
+$color-gray-darker: #33485F;
+$color-gray-darkest: #2C3E50;
+
+$color-green-light: lighten(#53B987, 10%);
+$color-green: #53B987;
+$color-green-dark: darken($color-green, 10%);
+$color-blue: #3498db;
+$color-blue-dark: #2980b9;
+$color-orange: #e67e22;
+$color-orange-dark: #d35400;
+$color-red: #e74c3c;
+$color-red-dark: #c0392b;
+$color-purple: #9362ea;
+$color-purple-dark: #8e44ad;
+$color-yellow: #f1c40f;
+$color-yellow-dark: #f39c12;
+
+$color-placeholder: $color-gray-medium;

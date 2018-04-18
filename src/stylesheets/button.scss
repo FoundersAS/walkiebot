@@ -1,0 +1,201 @@
+@import 'typography';
+@import 'animation';
+@import 'colors';
+@import 'animation';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $color-white;
+
+  border: none;
+  border-radius: 3px;
+  color: $color-gray-darker;
+
+  font-family: $font-family-base !important;
+
+  height: 2.2rem;
+  min-width: 2.2rem;
+
+  white-space: nowrap;
+  appearance: none;
+  outline: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  text-decoration: none;
+
+  transition:
+    color .18s $easing,
+    background-color .18s $easing;
+
+  &:focus,
+  &:hover {
+    background-color: $color-gray-lightest;
+    color: $color-green;
+    cursor: pointer;
+  }
+
+  &:before {
+    font-family: 'icomoon';
+    font-weight: normal !important;
+  }
+
+  &--text-icon {
+    &:before {
+      margin-right: .5rem;
+    }
+  }
+
+  &:not(&--icon):not(&--as-input) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    font-weight: $font-bolder;
+    line-height: 2.1;
+    text-transform: uppercase;
+  }
+
+  &--xsmall {
+    font-size: 11px;
+    height: 1.5rem;
+    min-width: 0;
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+  }
+  &--small {
+    font-size: .85rem;
+    height: 1.8rem;
+    min-width: 0;
+    padding-left: .5rem !important;
+    padding-right: .5rem !important;
+
+    @at-root .btn--small:not(.btn--icon):not(&--as-input) {
+      line-height: 1.6;
+    }
+  }
+
+  &--large {
+    font-size: 1.4rem;
+    min-width: 0;
+    height: auto;
+    padding: .2rem 2rem !important;
+  }
+
+  &--sidebar {
+    background-color: transparent;
+    background-color: $color-secondary-light;
+    color: $color-secondary-dark;
+    font-size: .85rem;
+    margin-bottom: 1rem;
+
+    [class*='icon-'] {
+      margin-right: .6rem;
+      font-size: 1rem;
+    }
+  }
+
+  &--slack {
+    font-size: 1rem;
+
+    .icon-slack {
+      margin-right: .4rem;
+    }
+  }
+
+  &--default,
+  &--success,
+  &--danger,
+  &--primary {
+    background-color: $color-green;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: $color-green-dark;
+      color: $color-white;
+    }
+  }
+
+  &--primary-light {
+    background-color: $color-gray-lightest;
+    color: $color-green;
+
+    &:focus,
+    &:hover {
+      background-color: $color-white;
+      box-shadow:
+        0 4px 20px -6px rgba($color-green-dark, .6),
+        0 8px 20px 0 rgba($color-green-dark, .2);
+    }
+  }
+
+  &--default {
+    color: $color-gray-darker;
+
+    &:focus,
+    &:hover {
+      background-color: $color-gray-lightest;
+      color: $color-green;
+    }
+  }
+
+  &--danger {
+    background-color: $color-red;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: $color-red-dark;
+      color: $color-white;
+
+    }
+  }
+
+  &--success {
+    background-color: $color-green;
+    color: $color-white;
+
+    &:focus,
+    &:hover {
+      background-color: $color-green-dark;
+      color: $color-white;
+    }
+  }
+
+  &--disabled {
+    color: $color-gray-lighter;
+
+    &:focus,
+    &:hover {
+      color: $color-gray-lighter;
+      cursor: not-allowed;
+    }
+
+    @at-root &.btn--primary {
+      background-color: $color-green-light;
+      color: $color-white;
+    }
+  }
+}
+
+.btn-as-input {
+  color: $color-placeholder;
+  font-weight: 400;
+  font-style: italic;
+  font-size: .85rem;
+
+  display: block;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: .5rem 0;
+
+  &:hover {
+    cursor: text;
+  }
+}

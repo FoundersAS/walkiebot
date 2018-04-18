@@ -1,0 +1,422 @@
+@import 'layers';
+@import 'colors';
+@import 'responsive';
+@import 'typography';
+@import 'animation';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 18rem;
+  margin-left: 4rem;
+
+  /* modal.scss - .modal#left prop is tied to width+padding */
+
+  background-color: $color-secondary;
+  min-width: 0;
+
+  %ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__breadcrumb {
+    padding: 0 2rem 1rem;
+    font-size: .85rem;
+    color: $color-secondary-light;
+    font-weight: $font-bold;
+  }
+
+  &__settings {
+    padding: 1rem 1rem 0rem;
+
+    & .input-group__label {
+      color: $color-secondary-light;
+
+      &--active {
+        color: $color-white;
+      }
+    }
+  }
+
+  &__back {
+    text-decoration: underline;
+    font-weight: $font-bold;
+    color: inherit;
+  }
+
+  &__header {
+    display: flex;
+    padding: 2rem 2rem 1rem;
+    width: 100%;
+  }
+  &__header-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: $color-gray-lighter no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 0 0 2px darken($color-secondary, 5%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding-top: .4rem;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &__header-meta {
+    padding-top: .1rem;
+    padding-left: .8rem;
+    min-width: 0;
+  }
+
+
+  &__header-title {
+    font-size: 1rem;
+    font-weight: $font-bolder;
+    line-height: 1;
+    color: $color-gray-lighter;
+    @extend %ellipsis;
+  }
+
+  &__header-handle {
+    font-size: .85rem;
+    font-weight: $font-normal;
+    color: $color-secondary-light;
+    @extend %ellipsis;
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  &__list {
+    font-weight: 300;
+    font-size: .8rem;
+    height: 100%;
+
+    padding: 1rem 1rem 2rem;
+    overflow: auto;
+    position: relative;
+
+    > .sidebar__trigger:after {
+      display: none;
+    }
+  }
+
+  /* Triggers and actions */
+
+  &__delete-action {
+    visibility: hidden;
+    display: inline-flex;
+    align-items: flex-end;
+    color: $color-secondary-lighter;
+    font-weight: 600;
+    font-size: 12px;
+    height: 15px;
+    cursor: pointer;
+    padding-right: .7rem;
+
+    &:hover {
+      color: white;
+    }
+
+    @at-root .sidebar__trigger-header:hover > & {
+      visibility: visible;
+    }
+  }
+
+  &__trigger {
+    position: relative;
+    color: $color-secondary-lighter;
+    font-weight: 400;
+    line-height: 1;
+
+    &:hover {
+      &:before {
+        background-color: $color-secondary-light;
+        color: $color-secondary-dark;
+      }
+    }
+
+    &:after {
+      background-color: $color-secondary-dark;
+      content: '';
+      width: 2px;
+      border-radius: 2px;
+      display: inline-block;
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: -1rem;
+      z-index: $layer-1;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+
+    &--in-current-path {
+      > .sidebar__trigger-header {
+        font-weight: 600;
+        color: $color-white;
+
+        &:before {
+          background-color: $color-secondary-light;
+          color: $color-secondary-dark;
+        }
+      }
+    }
+  }
+
+  &__trigger-header {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: .6rem;
+
+    &:hover {
+      .sidebar__trigger-add:before {
+        content: '\e918';
+        font-size: 15px;
+        line-height: 16px;
+        background-color: $color-white;
+        color: $color-secondary-dark;
+      }
+
+      &:before {
+        background-color: $color-white;
+        color: $color-secondary-dark;
+      }
+      .sidebar__trigger-title {
+        color: $color-white;
+      }
+    }
+  }
+
+  &__trigger-add {
+    height: 16px;
+    width: 16px;
+    position: relative;
+    display: inline-block;
+    margin-right: .4rem;
+    z-index: $layer-2;
+    cursor: pointer;
+    vertical-align: top;
+
+    &:before {
+      background-color: $color-secondary-dark;
+      color: $color-secondary-light;
+      border-radius: 50%;
+      font-family: 'Icomoon';
+      content: '\E913';
+      font-size: 7px;
+      display: inline-block;
+      text-align: center;
+      line-height: 16px;
+      height: 16px;
+      width: 16px;
+      z-index: $layer-1;
+
+      transition:
+        background-color .2s $easing,
+        color .2s $easing;
+    }
+
+    &:hover {
+
+      > .sidebar__trigger-title-avatar {
+        opacity: 0;
+      }
+
+      &:before {
+        content: '\e918';
+        font-size: 15px;
+        line-height: 16px;
+        background-color: $color-green !important;
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__trigger-delete {
+    position: relative;
+    z-index: $layer-2;
+    cursor: pointer;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: .6rem;
+
+    @at-root .sidebar__trigger--in-current-path > & {
+      color: white;
+    }
+  }
+
+  &__trigger-delete-icon {
+    margin-right: .4rem;
+    background-color: $color-gray-lighter;
+    border-radius: 3px;
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+
+    &:before {
+      color: $color-secondary;
+    }
+  }
+
+  &__trigger-title {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: .7rem;
+    line-height: 16px;
+    transition: color .2s $easing;
+    cursor: pointer;
+    position: relative;
+    vertical-align: top;
+
+    &--non-action {
+      cursor: default;
+    }
+  }
+
+  &__trigger-title-avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    background-color: $color-gray-lighter;
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 3px;
+    width: 16px;
+    height: 16px;
+
+    transition: opacity .2s $easing;
+  }
+
+  &__trigger-title-value {
+    font-weight: $font-bold;
+  }
+
+  &__actions-wrap {
+    margin-top: .2rem;
+
+    &:after {
+      background-color: $color-secondary-dark;
+      content: '';
+      width: 2px;
+      border-radius: 2px;
+      display: inline-block;
+      position: absolute;
+      left: 7px;
+      top: 1rem;
+      height: 1rem;
+      z-index: $layer-1;
+    }
+  }
+
+  &__actions {
+    font-size: .8rem;
+    position: relative;
+    padding-left: 1.45rem;
+  }
+
+  /* ActionMenu */
+  &__action-popup-wrap {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 4rem;
+    bottom: 0;
+    text-align: center;
+
+    z-index: $layer-5;
+
+    width: 18rem;
+  }
+
+  &__action-popup-backdrop {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.3);
+  }
+
+  &__action-popup {
+    background-color: $color-white;
+    color: $color-gray-darker;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.4);
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 80%;
+    text-align: left;
+
+    position: relative;
+    z-index: $layer-1;
+  }
+
+  &__action-popup-information-wrap {
+    display: flex;
+    align-items: center;
+    padding: .8rem 1rem;
+    background-color: $color-gray-lightest;
+  }
+
+  &__action-popup-information {
+    font-size: .9rem;
+  }
+
+  &__action-popup-information-name {
+    font-weight: $font-bold;
+  }
+
+  &__action-popup-icon {
+    margin-right: .8rem;
+    color: $color-green;
+  }
+
+  &__action-popup-action {
+    margin: .3rem;
+    padding: .8rem 1rem .8rem .6rem;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    z-index: $layer-2;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-gray-lightest;
+      color: $color-green;
+    }
+  }
+}

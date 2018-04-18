@@ -1,0 +1,57 @@
+$color-link: #3498db;
+$color-caret: #007AB8;
+
+.attachment-image {
+  &__unfurl {
+    color: #555459;
+    font-size: 14px;
+    font-weight: 400;
+
+    /* &-caret {
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-block;
+
+      &--block {
+        display: block;
+      }
+
+      &.closed {
+        transform: rotate(-90deg);
+      }
+
+      &:before {
+        color: $color-caret;
+      }
+    } */
+
+    &-image {
+      display: inline-block;
+      max-height: 300px;
+      max-width: 100%;
+
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+      background-color: #ffffff;
+      background-size: cover;
+
+      margin-top: 9px;
+
+      & img {
+        opacity: 0;
+        margin-top: 0;
+        max-height: 300px;
+        max-width: 100%;
+        border-radius: 3px;
+      }
+
+      &--hidden {
+        display: none;
+      }
+
+      &--error {
+        max-width: 64px;
+      }
+    }
+  }
+}

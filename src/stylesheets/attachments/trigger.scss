@@ -1,0 +1,200 @@
+@import '../colors';
+@import '../layers';
+@import '../animation';
+@import '../typography';
+
+.trigger {
+
+  background-color: $color-white;
+  color: $color-gray-dark;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  z-index: $layer-1;
+  display: inline-block;
+
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+
+  box-shadow: 0 2px 6px 0 rgba($color-gray-dark, .5);
+
+  transition:
+    color .2s $easing,
+    box-shadow .2s $easing,
+    opacity .2s $easing;
+
+  &:hover {
+    color: $color-green;
+    cursor: default;
+  }
+
+  &--has-action {
+    color: $color-white;
+    background-color: $color-green;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green-dark;
+    }
+  }
+
+  &--is-adding {
+    color: $color-white;
+    background-color: $color-gray-dark;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  @at-root .message__controls & {
+    margin-left: .5rem;
+
+  }
+  /* Trigger behaviours inside a message */
+  @at-root .message .actions & {
+    opacity: 0;
+  }
+
+  @at-root .message:hover .actions & {
+    opacity: 1;
+  }
+
+  /* Trigger behaviours inside a action__button */
+  @at-root .action__button &,
+  .action__select & {
+    position: absolute;
+    top: -8px;
+    left: -5px;
+  }
+
+  &__popup {
+    position: absolute;
+    bottom: 0;
+    left: -1.1rem;
+    padding-bottom: 1.2rem;
+
+    @at-root .trigger--on-message & {
+      left: auto;
+      right: -0.5rem;
+      padding-bottom: 1.4rem;
+    }
+  }
+
+  &__popup-inner {
+    font-family: $font-family-base;
+    text-align: left;
+    line-height: normal;
+    position: relative;
+
+    z-index: $layer-8;
+
+    display: none;
+
+    @at-root .trigger:hover & {
+      display: block;
+    }
+
+    background-color: $color-white;
+    box-shadow: 0 4px 30px -2px rgba($color-gray-darker, .4);
+    border-radius: 4px;
+
+    > div, button {
+      position: relative;
+      z-index: $layer-1;
+    }
+
+    &:before {
+      content: '';
+
+      background-color: $color-white;
+      box-shadow: 1px 1px 20px -4px rgba($color-gray-darker, .5);
+      border-radius: 4px;
+
+      width: 1rem;
+      height: 1rem;
+
+      transform: rotate(45deg);
+
+      position: absolute;
+      left: 1.1rem;
+      bottom: -.3rem;
+    }
+
+    &:after {
+      content: '';
+
+      background-color: $color-white;
+
+      width: 2rem;
+      height: 1rem;
+
+      position: absolute;
+      bottom: 0;
+      left: .5rem;
+    }
+
+    @at-root .trigger--on-message & {
+      &:before {
+        left: auto;
+        right: 1.1rem;
+      }
+
+      &:after {
+        left: auto;
+        right: .5rem;
+      }
+    }
+  }
+
+  &__label {
+    color: $color-green;
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: $font-bolder;
+    display: block;
+    padding: 1.2rem 1.2rem .2rem;
+  }
+
+  &__action-items {
+    margin-bottom: .3 rem;
+  }
+
+  &__action-item {
+    color: $color-gray-darker;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-right: 1rem;
+    margin-left: 1.2rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-gray-light;
+    }
+  }
+
+  &__action-item-title {
+    white-space: nowrap;
+    font-size: .85rem;
+    margin-right: 1rem;
+  }
+
+   &__action-controls {
+      padding: 0 1rem 1rem;
+      text-align: right;
+
+      &--no-actions {
+        padding: 1rem;
+      }
+    }
+
+  &__popup-btn {
+    line-height: 2.6;
+    height: 2.1rem;
+    padding: 0 1rem !important;
+    width: 100%;
+  }
+}

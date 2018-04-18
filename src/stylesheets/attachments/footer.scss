@@ -1,0 +1,51 @@
+$color: #717274;
+
+.footer {
+  display: flex;
+  align-items: center;
+
+  margin-top: .3rem;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    margin-top: 0px;
+    margin-right: .3rem;
+
+    background-size: 16px 16px;
+    display: inline-block;
+  }
+
+  &__ts,
+  &__text {
+    display: flex;
+    align-items: center;
+
+    color: $color;
+    font-size: .75rem;
+    line-height: .875rem;
+    padding-top: .25rem;
+  }
+
+  &__ts {
+    &:before {
+      content: '|';
+      color: #e8e8e8;
+      margin: 0 .25rem;
+    }
+  }
+
+  & .attachment__image-caret {
+    margin-left: .25rem;
+    padding-top: .19rem;
+  }
+}
+
+.fields + .footer {
+  margin-top: 3px;
+}
+
+.title + .footer {
+  margin-top: 2px;
+}

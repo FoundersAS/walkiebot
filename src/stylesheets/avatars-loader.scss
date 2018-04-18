@@ -1,0 +1,190 @@
+@import 'animation';
+
+.avatars-loader {
+  position: absolute;
+  bottom: .8rem;
+  right: .8rem;
+
+  &__message {
+    margin: 0 .5rem;
+    color: #4D394B
+  }
+  &__inner {
+    position: relative;
+    padding: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow:
+    0 0 0 1px #4D394B;
+
+  }
+
+  &--small {
+    transform: scale(.8);
+  }
+
+  &--inline {
+    background-color: rgba(white, .8);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+
+    &.avatars-loader--loading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 0 1rem 1rem 0;
+    }
+  }
+
+  &--overlay {
+    background-color: rgba(white, .8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+
+    &.avatars-loader--loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .avatars-loader__inner {
+      transform: scale(2);
+    }
+  }
+
+  .avatars-loader__bubble {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    top: -.4em;
+    right: 2rem;
+  }
+
+  .avatars-loader__bubble-fill {
+    fill: #fff;
+  }
+
+  .avatars-loader__avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .avatars-loader__pupil {
+    animation: avatars-loader-lookaround 5000ms infinite ease-in-out;
+  }
+
+
+  &--loading {
+    .avatars-loader__dot {
+      animation: avatars-loader-dot-jump 1000ms infinite ease-in-out;
+    }
+    .avatars-loader__dot-1 {
+      animation-delay: 200ms;
+    }
+
+    .avatars-loader__dot-2 {
+      animation-delay: 400ms;
+    }
+
+    .avatars-loader__dot-3 {
+      animation-delay: 600ms;
+    }
+  }
+}
+
+@keyframes avatars-loader-dot-jump {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes avatars-loader-lookaround {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  10% {
+    transform: translateX(-30px) translateY(-15px);
+  }
+  20% {
+    transform: translateX(-30px) translateY(8px);
+  }
+  30% {
+    transform: translateX(15px) translateY(30px);
+  }
+  40% {
+    transform: translateX(-40px) translateY(0);
+  }
+  50% {
+    transform: translateX(-20px) translateY(-15px);
+  }
+  60% {
+    transform: translateX(15px) translateY(-30px);
+  }
+  70% {
+    transform: translateX(-15px) translateY(15px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.avatars-loader-overlay__transition-enter {
+  opacity: 0.01;
+}
+.avatars-loader-overlay__transition-enter-active {
+  opacity: 1;
+  transition: opacity .3s $easing;
+}
+.avatars-loader-overlay__transition-leave {
+  opacity: 1;
+}
+.avatars-loader-overlay__transition-leave-active {
+  opacity: 0.01;
+  transition: opacity .3s $easing;
+}
+
+.avatars-loader__transition-enter {
+  opacity: 0.01;
+  transform: translateY(4rem);
+}
+.avatars-loader__transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity .3s $easing,
+    transform .3s $easing;
+}
+.avatars-loader__transition-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+.avatars-loader__transition-leave-active {
+  opacity: 0.01;
+  transform: translateY(4rem);
+  transition:
+    opacity .3s $easing,
+    transform .3s $easing;
+}

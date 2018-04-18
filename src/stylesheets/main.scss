@@ -1,0 +1,53 @@
+@import '~normalize.css/normalize.css';
+@import 'typography';
+@import 'responsive';
+@import 'animation';
+
+@import 'button'; /* TODO: Mads fix smarter way to include */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page {
+  overflow: auto;
+  font-weight: 300;
+
+  &__inner {
+    max-width: 60rem;
+    padding: 3rem 8rem;
+
+    @media (max-width: $break-point-large) {
+      padding: 1rem 3rem;
+    }
+
+    &--hackalicious {
+      padding-top: 0rem;
+    }
+  }
+}
+
+
+.hidden {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+
+  &.show {
+    position: auto;
+    z-index: inherit;
+    opacity: 1;
+  }
+}

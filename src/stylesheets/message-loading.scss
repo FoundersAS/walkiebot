@@ -1,0 +1,33 @@
+@import 'colors';
+
+@keyframes jump {
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+.message-loading {
+  padding-left: 5.2rem;
+
+  &--no-padding {
+    padding: 0;
+  }
+
+  &-svg {
+    width: 100%;
+    max-width: 1rem;
+  }
+
+  .dot {
+    fill: lighten($color-text-secondary, 20%);
+    animation: jump .4s infinite alternate ease-in-out;
+
+    &--2 {
+      animation-delay: .2s;
+    }
+
+    &--3 {
+      animation-delay: .4s;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import '../colors';
+@import '../animation';
+
+.accordion {
+  @at-root .builder__message-settings {
+    .accordion {
+      margin-left: 1.8rem;
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-gray-lighter;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: .9rem;
+    color: $color-gray-darker;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: .5rem 2rem .5rem 1.2rem;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    &--empty {
+      color: $color-gray-medium;
+    }
+
+    &:before {
+      font-family: 'icomoon';
+      font-weight: normal;
+      content: '\e901';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-medium;
+      position: absolute;
+      left: 0;
+
+      transform-origin: center;
+      transform: rotate(-90deg);
+
+      transition:
+        transform .2s $easing;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-green;
+
+      &:before {
+        color: inherit;
+      }
+    }
+
+    @at-root .accordion--open > .accordion__title:before {
+      transform: rotate(0);
+    }
+  }
+
+  &__description {
+    color: #9A949A;
+    font-size: .9rem;
+    margin: 0;
+  }
+
+  &__wrap {
+    overflow: hidden;
+    height: 0;
+    padding: 0 1rem;
+  }
+
+  @at-root .builder__message-settings .accordion--open > .accordion__wrap {
+    margin: 0 0 2rem;
+    padding: 0 2.2rem 0 1.2rem;
+  }
+
+  @at-root .accordion--open > .accordion__wrap {
+    height: auto;
+    overflow: visible;
+    margin: .5rem 0 2rem;
+  }
+}

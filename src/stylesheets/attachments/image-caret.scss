@@ -1,0 +1,28 @@
+$color-caret: #007AB8;
+
+.attachment__image-caret {
+  color: #555459;
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+  display: inline;
+
+  &--block {
+    display: block;
+  }
+
+  &-icon {
+    display: inline-block;
+
+    &:before {
+      color: $color-caret;
+      font-size: 15px;
+    }
+
+    &--closed {
+      transform: rotate(-90deg);
+    }
+  }
+
+}

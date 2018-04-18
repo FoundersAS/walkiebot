@@ -1,0 +1,277 @@
+@import 'colors';
+@import 'animation';
+@import 'typography';
+@import 'layers';
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5rem 2rem 5rem 6rem;
+  overflow: auto;
+
+  background-color: rgba($color-gray-darkest, .4);
+
+  z-index: $layer-7;
+
+  &__container {
+    background-color: white;
+    border-radius: 6px;
+    margin: 0 auto;
+    max-width: 50rem;
+    min-width: 30rem;
+    min-height: 20rem;
+    box-shadow: 0 4px 12px 0 rgba($color-gray-darkest, .3);
+
+    position: relative;
+    z-index: 1100;
+
+    &--full-width {
+      max-width: 100%;
+    }
+  }
+
+
+  &__header {
+    padding: 1rem 1.4rem 0 2rem;
+    font-weight: $font-bolder;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      &--bigger {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__content {
+    padding: 2rem 3.5rem;
+
+    .area--export,
+    .area--import {
+      background-color: $color-gray-lightest;
+      border: 2px solid $color-gray-lightest;
+      padding: 1rem;
+      margin: 0;
+      min-height: 20rem;
+      width: 100%;
+      overflow-x: auto;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
+    .area--import {
+      margin-bottom: 1rem;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $color-gray-light;
+      }
+    }
+
+    .area--export {
+      display: block;
+    }
+
+
+    &-controls {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: flex-end;
+
+      .btn:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  /* Mod */
+  &--clean {
+    .modal__container {
+      min-height: auto;
+    }
+    .modal__content {
+      padding: 0;
+    }
+  }
+}
+
+/* Add bot content styles */
+.modal__custom {
+  display: flex;
+
+  &-left {
+    width: 50%;
+    background-color: $color-green;
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    border-radius: 6px 0 0 6px;
+  }
+
+  &-right {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 3rem;
+  }
+
+  &-right-item {
+    margin-bottom: 2rem;
+  }
+
+  &-right-title {
+    font-weight: 300;
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+  }
+
+  &-right-subtitle {
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+  }
+
+  &-right-desctiption {
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &-title {
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  &-subtitle {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+  }
+
+  &-meta {
+    text-align: center;
+  }
+
+  &-edit {
+    padding-top: 3rem;
+
+    .btn {
+
+    }
+  }
+
+
+  /* List */
+  &-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: .8rem;
+    box-shadow:
+      0 0 0 2px rgba($color-gray-medium, .5),
+      0 0 0 0 rgba($color-gray-medium, .5);
+    background-color: $color-white;
+    border-radius: 4px;
+    padding: .6rem;
+    position: relative;
+
+    transition:
+      box-shadow .2s $easing;
+
+    &:hover {
+      box-shadow:
+        0 3px 20px 0 rgba($color-gray-medium, .3),
+        0 3px 20px -5px rgba($color-gray-medium, .5);
+      .list__action {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-list-add-item {
+    display: flex;
+    padding: 1rem 1rem 1rem 1.2rem;
+    align-items: center;
+    border-radius: 4px;
+
+    box-shadow:
+      0 0 0 2px rgba($color-gray-medium, .5),
+      0 0 0 0 rgba($color-gray-medium, .5);
+    background-color: $color-white;
+    border-radius: 4px;
+
+    transition:
+      box-shadow .2s $easing;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow:
+        0 3px 20px 0 rgba($color-gray-medium, .3),
+        0 3px 20px -5px rgba($color-gray-medium, .5);
+    }
+  }
+
+  &-list-add-text {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-gray-medium;
+  }
+
+  &-list-add-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 2rem;
+      color: $color-gray-medium;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

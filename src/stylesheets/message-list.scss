@@ -1,0 +1,24 @@
+@import '_colors';
+
+.message-list {
+  flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &__inner {
+    display: flex;
+    align-content: flex-end;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    min-height: 100%;
+    padding: 1rem 0 .6rem;
+  }
+
+  .message {
+    flex-shrink: 0;
+    flex-basis: 100%;
+    align-items: flex-start;
+    min-height: 100%;
+  }
+}

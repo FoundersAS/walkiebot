@@ -1,0 +1,14 @@
+$color-link: #007AB8;
+
+.title {
+  font-weight: 600;
+
+  &--link {
+    text-decoration: none;
+    color: $color-link;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

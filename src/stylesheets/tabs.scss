@@ -1,0 +1,93 @@
+@import 'animation';
+@import 'colors';
+@import 'layers';
+@import 'typography';
+
+.tabs {
+  &__selector {
+    display: flex;
+    flex-basis: 100%;
+    position: relative;
+
+    &:before {
+      content: '';
+      background-color: $color-gray-lighter;
+
+      height: 2px;
+      width: calc(100% / 2);
+
+      bottom: 0;
+      position: absolute;
+
+      transition: transform .3s $easing;
+
+      @at-root .tabs--export & {
+        background-color: $color-green;
+        width: calc(100% / 2);
+        height: 3px;
+      }
+    }
+
+    &[data-active-tab='0']:before {
+      transform: translateX(0);
+    }
+
+    &[data-active-tab='1']:before {
+      transform: translateX(100%);
+    }
+  }
+
+  &__selector-tab {
+    color: $color-secondary-light;
+    border-bottom: 1px solid $color-secondary-dark;
+    flex: 1;
+    text-align: center;
+    padding: .8rem 0;
+    font-size: .7rem;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    transition: color .2s $easing;
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    @at-root .tabs--export & {
+      border-bottom: 2px solid $color-gray-medium;
+      font-size: 1rem;
+      padding: 1rem 0;
+      color: $color-gray-medium;
+
+      &:hover {
+        color: $color-green;
+        background-color: $color-gray-lightest;
+      }
+    }
+
+    &:hover {
+      color: $color-gray-lighter;
+    }
+  }
+
+  &__selector-tab--active {
+    color: $color-gray-lighter;
+
+    @at-root .tabs--export & {
+      color: $color-green;
+    }
+  }
+
+  &__content {
+    flex-basis: 100%;
+    height: calc(100% - 2.4rem);
+    overflow: auto;
+  }
+
+  &__content-tab {
+  }
+
+  &__content-tab--active {
+
+  }
+}

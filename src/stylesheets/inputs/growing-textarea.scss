@@ -1,0 +1,6 @@
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: #d6d6da;
+  font-style: italic;
+}

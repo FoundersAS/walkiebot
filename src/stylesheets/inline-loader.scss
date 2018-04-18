@@ -1,0 +1,51 @@
+$size: 2rem;
+$padding: $size / 4;
+
+.loader {
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #ECF0F1;
+
+    box-shadow:
+        0 2px 10px 0 rgba(0,0,0,.1),
+        0 2px 25px -5px rgba(0,0,0,.3);
+
+    height: calc(#{$size} + #{$padding});
+
+    &--rows-1 {
+      width: calc((#{$size} + (#{$padding}) * 2) * 1);
+    }
+    &--rows-2 {
+      width: calc((#{$size} + (#{$padding}) * 2) * 2);
+    }
+    &--rows-3 {
+      width: calc((#{$size} + (#{$padding}) * 2) * 3);
+    }
+    &--rows-4 {
+      width: calc((#{$size} + (#{$padding}) * 2) * 4);
+    }
+
+    &__dots {
+        display: flex;
+        align-items: center;
+        animation-name: dots-1;
+        animation-duration: 3000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        width: calc((#{$size} * 8) + ((#{$padding} * 2) * 8));
+    }
+    &__dot {
+        width: $size;
+        height: $size;
+        margin: 0 $padding;
+    }
+
+    @keyframes dots-1 {
+        to {
+            transform: translatex(calc((-#{$size} * 4) + ((-#{$padding} * 2) * 4)));
+        }
+    }
+}

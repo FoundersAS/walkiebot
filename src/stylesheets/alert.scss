@@ -1,0 +1,183 @@
+$color-background--error: #ff9f72;
+$color-background--warning: #f39c12;
+$color-background--success: #9ad8b9;
+$color-background--notification: #3498db;
+
+.system-alerts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  margin: 1rem;
+  width: calc(100% - 2rem);
+
+  transform: translateY(calc(-100% - 2rem));
+  transition: transform .2s ease-in-out;
+
+  @at-root .system-alerts--show {
+    transform: translateY(0);
+  }
+}
+
+.system-alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  border-radius: 2px;
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  flex-basis: 100%;
+
+  color: lighten($color-background--notification, 50%);
+  background-color: $color-background--notification;
+  box-shadow: 0 4px 15px -8px rgba(0,0,0,.5);
+
+  &__inner {
+    padding: 1.2rem 1.6rem;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-right: 2rem;
+  }
+
+  &__message {
+    font-weight: 300;
+  }
+
+  &__close-btn {
+    padding: 1.2rem;;
+    font-size: 20px;
+
+    transition: color .2s ease-in-out;
+    color: darken($color-background--notification, 15%);
+
+    &:hover {
+      cursor: pointer;
+      color: darken($color-background--notification, 50%);
+    }
+  }
+}
+
+.alert {
+  border-radius: 2px;
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  flex-basis: 100%;
+
+  &__inner {
+    padding: 1.2rem 1.6rem;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-right: 2rem;
+  }
+
+  &__message {
+    font-weight: 300;
+  }
+
+  &__content {
+    pre {
+      margin: .5rem 0 0;
+      white-space: pre-wrap;
+    }
+  }
+
+  &:not(&--show):not(&--global) {
+    display: none;
+  }
+
+  &--global {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    box-shadow: 0 4px 15px -8px rgba(0,0,0,.5);
+
+    transform: translateY(calc(-100% - 2rem));
+    transition: transform .2s ease-in-out;
+
+    @at-root .alert--show {
+      transform: translateY(0);
+    }
+  }
+
+  &--dismissable {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__close-btn {
+    padding: 1.2rem;;
+    font-size: 20px;
+
+    transition: color .2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @at-root .alert:not(.alert--dismissable) .alert__close-btn {
+      display: none;
+    }
+  }
+
+  /* Theme */
+  &--error {
+    background-color: $color-background--error;
+    color: darken($color-background--error, 50%);
+
+    @at-root .alert--error .alert__close-btn {
+      color: darken($color-background--error, 15%);
+
+      &:hover {
+        color: darken($color-background--error, 50%);
+      }
+    }
+  }
+
+  &--warning {
+    background-color: $color-background--warning;
+    color: darken($color-background--warning, 50%);
+
+    @at-root .alert--warning .alert__close-btn {
+      color: darken($color-background--warning, 15%);
+
+      &:hover {
+        color: darken($color-background--warning, 50%);
+      }
+    }
+  }
+
+  &--success {
+    background-color: $color-background--success;
+    color: darken($color-background--success, 50%);
+
+    @at-root .alert--success .alert__close-btn {
+      color: darken($color-background--success, 15%);
+
+      &:hover {
+        color: darken($color-background--success, 50%);
+      }
+    }
+  }
+
+  &--notification {
+    background-color: $color-background--notification;
+    color: darken($color-background--notification, 50%);
+
+    @at-root .alert--notification .alert__close-btn {
+      color: darken($color-background--notification, 15%);
+
+      &:hover {
+        color: darken($color-background--notification, 50%);
+      }
+    }
+  }
+}

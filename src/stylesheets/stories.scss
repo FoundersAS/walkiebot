@@ -1,0 +1,94 @@
+@import 'animation';
+@import 'colors';
+
+.stories {
+  &__wrap {
+    background-color: $color-gray-lighter;
+    height: 100%;
+    width: 100%;
+    margin-left: 4rem;
+    overflow-x: auto;
+  }
+
+  &__tools {
+    width: 100%;
+    padding: 1.5rem 2rem 0 3rem;
+
+    display: flex;
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: .5rem 0;
+    appearance: none;
+    border: none;
+
+    background-color: transparent;
+    outline: 0;
+
+    box-shadow: 0 1px 0 #9B9B9B;
+
+    display: inline-block;
+
+    transition: box-shadow .2s $easing;
+
+    &::placeholder {
+      font-style: italic;
+      color: $color-gray-dark;
+    }
+
+    &:focus {
+      box-shadow: 0 1px 0 $color-green;
+    }
+  }
+
+  &__toggle {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+
+    align-self: center;
+
+    cursor: pointer;
+
+    &::before {
+      transition: color .2s $easing;
+      color: $color-gray-dark;
+    }
+
+    &--active {
+      cursor: default;
+
+      &::before {
+        color: $color-green;
+      }
+    }
+
+    &:hover:not(.stories__toggle--active) {
+      &:before {
+        color: $color-gray-darkest;
+      }
+    }
+  }
+
+  &__list {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+    &--cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &--list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import '../colors';
+@import '../typography';
+@import '../layers';
+
+.builder-reaction {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &__emoji {
+    flex: 1;
+    padding: 0 1rem;
+
+
+    input {
+      appearance: none;
+      border: 0;
+      padding: 0;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      white-space: nowrap;
+
+      user-select: all;
+      outline: none;
+
+      &:focus {
+        background-color: $color-gray-lightest;
+      }
+    }
+  }
+
+  .input-component {
+    max-width: 2.5rem;
+    margin-right: 1rem;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    flex: 0;
+  }
+
+  &__picker {
+    position: relative;
+    .emoji-mart {
+      position: absolute;
+      z-index: $layer-1;
+      margin-top: -1rem;
+      right: 0;
+      top: 0;
+      border: 1px solid $color-gray-light;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 2px 30px -8px rgba($color-gray-darker, .5);
+
+      font-family: $font-family-base;
+    }
+
+    .emoji-mart-emoji:hover:before {
+      background-color: $color-gray-lighter;
+      border-radius: 4px;
+    }
+
+    .emoji-mart-search {
+      margin: 0;
+      padding: 0;
+
+      input {
+        border-radius: 0;
+        border: 0;
+        padding: 1rem 1.4rem;
+        border-bottom: 1px solid $color-gray-light;
+        font-family: $font-family-base;
+        font-size: 14px;
+        color: $color-gray-darker;
+
+        &:focus {
+          border-bottom-color: $color-green;
+        }
+      }
+    }
+
+    .emoji-mart-scroll {
+      padding: 0 1rem 1rem 1.5rem;
+    }
+
+    .emoji-mart-category {
+      padding-bottom: 2rem;
+    }
+
+    .emoji-mart-category-label span {
+      padding: 0 0 0 1.2rem;
+      text-transform: uppercase;
+      font-size: .7rem;
+      font-weight: $font-bolder;
+      color: $color-green;
+      transform: rotateZ(90deg) translateY(calc(-100% + .9rem));
+      transform-origin: top left;
+      background-color: $color-white;
+    }
+  }
+}

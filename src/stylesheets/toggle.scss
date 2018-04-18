@@ -1,0 +1,50 @@
+@import 'typography';
+@import 'animation';
+@import 'colors';
+@import 'animation';
+
+.toggle {
+  display: flex;
+  width: 100%;
+
+  box-shadow: 0 0 0 1px $color-gray-lighter;
+  border-radius: 4px;
+  margin-top: .4rem;
+
+  &__toggler {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+
+    font-size: 14px;
+    line-height: 0;
+    min-width: 0;
+    padding: 1rem .5rem;
+    margin: 0;
+    color: $color-gray-medium;
+
+    transition:
+      color .16s $easing,
+      background-color .16s $easing;
+
+    &:hover {
+      background-color: $color-gray-lightest;
+    }
+
+    &--set {
+      color: $color-green;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 0.01px;
+      height: 0.01px;
+    }
+  }
+}

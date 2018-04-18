@@ -1,0 +1,58 @@
+@import '_slack-typography';
+@import '_slack-colors';
+
+.slack-btn {
+  font-weight: 700;
+  color: $color-gray;
+
+  font-family: $font-family-slack;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: .25rem;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  padding: .5rem 1rem;
+  appearance: none;
+
+  &:not(&--primary) {
+    box-shadow: inset 0 0 0 1px rgba(44, 45, 48, 0.3);
+    text-shadow: initial;
+    background: $color-white;
+    margin-right: 0.5rem;
+
+    &:hover {
+      color: $color-blue-dark;
+    }
+  }
+
+  &--primary {
+    background-color: $color-green;
+    color: $color-white;
+    font-weight: $font-bolder;
+    text-shadow: 0 1px 1px rgba(44, 45, 48, 0.1);
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 0.25rem;
+    }
+
+    &:hover {
+      box-shadow: inset 0 -2px rgba(0, 0, 0, 0.25);
+    }
+  }
+}

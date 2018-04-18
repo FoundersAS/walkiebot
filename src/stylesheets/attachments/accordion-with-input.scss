@@ -1,0 +1,405 @@
+/* @import '../colors';
+@import '../animation';
+@import '../typography';
+
+
+.accordion-with-input {
+  position: relative;
+
+  @at-root .builder__message-attachment-actions > &,
+  .builder__message-attachment-fields > & {
+      box-shadow: 0 0 0 1px $color-gray-light;
+      border-radius: 4px;
+      margin-bottom: .6rem;
+      padding: .2rem;
+  }
+
+  &__header {
+    font-weight: 400;
+    font-size: .85rem;
+    color: $color-gray-darker;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &__type {
+    font-size: .7rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $color-green;
+    white-space: nowrap;
+    text-transform: uppercase;
+    border: none;
+    padding-right: .5rem;
+
+    @at-root .accordion-with-input:hover &,
+    .accordion-with-input--open & {
+      display: none;
+    }
+  }
+
+  &__controls,
+  &__toggle {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__controls {
+    overflow: hidden;
+    width: 0;
+
+    .btn:hover {
+      color: $color-green;
+    }
+
+    @at-root .accordion-with-input:hover > .accordion-with-input__header > &,
+    .accordion-with-input--open > .accordion-with-input__header > &,
+    .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header:hover & {
+      margin-left: .6rem;
+      width: auto;
+    }
+
+    @at-root .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header & {
+      width: 0;
+    }
+  }
+
+  &__toggle {
+    padding: 0 .3rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    &:before {
+      font-family: 'icomoon';
+      font-size: 1rem;
+      content: '\e901';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-medium;
+
+      transform-origin: center;
+      transform: rotate(-90deg);
+
+      transition:
+        transform .2s $easing;
+
+      @at-root .accordion-with-input > .accordion-with-input__header > & {
+        transform: rotate(-90deg);
+      }
+
+      @at-root .accordion-with-input--open &,
+      .accordion-with-input--open > .accordion-with-input__header > & {
+        transform: rotate(0);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-green;
+
+      &:before {
+        color: inherit;
+      }
+    }
+  }
+
+  &__input {
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    color: inherit;
+    line-height: 1;
+
+    width: 100%;
+    border: none;
+    appearance: none;
+    background-color: transparent;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0;
+    outline: 0;
+
+    margin-right: 1rem;
+
+    transition: box-shadow .2s $easing;
+
+    box-shadow:
+        0 5px 0 $color-white,
+        0 5px 0 $color-gray-light;
+
+    @at-root .accordion-with-input > .accordion-with-input__header:hover .accordion-with-input__input,
+    .accordion-with-input > .accordion-with-input__header .accordion-with-input__input:focus {
+        box-shadow:
+          0 5px 0 $color-white,
+          0 6px 0 $color-gray-light;
+    }
+
+    &::placeholder {
+      color: $color-placeholder;
+      font-style: italic;
+      font-weight: 400;
+      opacity: 1;
+    }
+  }
+
+  &__description {
+    color: #9A949A;
+    font-size: .9rem;
+    margin: 0;
+  }
+
+  &__wrap {
+    overflow: hidden;
+    height: 0;
+  }
+
+  &__inner {
+    padding: .8rem 1rem 0 1.65rem;
+    position: relative;
+
+    @at-root .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header {
+      margin-right: -.95rem;
+
+    }
+
+    @at-root .accordion-with-input__inner & {
+      padding: .4rem 0 0 1.65rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        border-radius: 4px;
+        top: 0;
+        bottom: 0;
+        left: 11px;
+        background-color: $color-green;
+      }
+    }
+
+    @at-root .accordion-with-input--option.accordion-with-input--open {
+      padding-bottom: 1rem;
+    }
+  }
+
+  @at-root .accordion-with-input--open > .accordion-with-input__wrap {
+    height: auto;
+    overflow: visible;
+  }
+}
+ */
+ @import '../colors';
+@import '../animation';
+@import '../typography';
+
+
+.accordion-with-input {
+  position: relative;
+
+  @at-root .builder__message-attachment-actions > &,
+  .builder__message-attachment-fields > & {
+      box-shadow: 0 0 0 1px $color-gray-light;
+      border-radius: 4px;
+      margin-bottom: .6rem;
+      padding: .2rem;
+  }
+
+  &__header {
+    font-weight: 400;
+    font-size: .85rem;
+    color: $color-gray-darker;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &__type {
+    font-size: .7rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $color-green;
+    white-space: nowrap;
+    text-transform: uppercase;
+    border: none;
+    padding-right: .5rem;
+
+    @at-root .accordion-with-input:hover &,
+    .accordion-with-input--open & {
+      display: none;
+    }
+  }
+
+  &__controls,
+  &__toggle {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__controls {
+    overflow: hidden;
+    width: 0;
+
+    .btn:hover {
+      color: $color-green;
+    }
+
+    @at-root .accordion-with-input:hover > .accordion-with-input__header > &,
+    .accordion-with-input--open > .accordion-with-input__header > &,
+    .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header:hover & {
+      margin-left: .6rem;
+      width: auto;
+    }
+
+    @at-root .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header & {
+      width: 0;
+    }
+  }
+
+  &__toggle {
+    padding: 0 .3rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    &:before {
+      font-family: 'icomoon';
+      font-size: 1rem;
+      content: '\e901';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-medium;
+
+      transform-origin: center;
+      transform: rotate(-90deg);
+
+      transition:
+        transform .2s $easing;
+
+      @at-root .accordion-with-input > .accordion-with-input__header > & {
+        transform: rotate(-90deg);
+      }
+
+      @at-root .accordion-with-input--open &,
+      .accordion-with-input--open > .accordion-with-input__header > & {
+        transform: rotate(0);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-green;
+
+      &:before {
+        color: inherit;
+      }
+    }
+  }
+
+  &__input {
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    color: inherit;
+    line-height: 1;
+
+    width: 100%;
+    border: none;
+    appearance: none;
+    background-color: transparent;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0;
+    outline: 0;
+
+    margin-right: 1rem;
+
+    transition: box-shadow .2s $easing;
+
+    box-shadow:
+        0 5px 0 $color-white,
+        0 5px 0 $color-gray-light;
+
+    @at-root .accordion-with-input > .accordion-with-input__header:hover .accordion-with-input__input,
+    .accordion-with-input > .accordion-with-input__header .accordion-with-input__input:focus {
+        box-shadow:
+          0 5px 0 $color-white,
+          0 6px 0 $color-gray-light;
+    }
+
+    &::placeholder {
+      color: $color-placeholder;
+      font-style: italic;
+      font-weight: 400;
+      opacity: 1;
+    }
+  }
+
+  &__description {
+    color: #9A949A;
+    font-size: .9rem;
+    margin: 0;
+  }
+
+  &__wrap {
+    overflow: hidden;
+    height: 0;
+  }
+
+  &__inner {
+    padding: .8rem 1rem 0 1.65rem;
+    position: relative;
+
+    @at-root .accordion-with-input__wrap .accordion-with-input__inner .accordion-with-input__header {
+      margin-right: -.95rem;
+
+    }
+
+    @at-root .accordion-with-input__inner & {
+      padding: .4rem 0 0 1.65rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        border-radius: 4px;
+        top: 0;
+        bottom: 0;
+        left: 11px;
+        background-color: $color-green;
+      }
+    }
+
+    @at-root .accordion-with-input--option.accordion-with-input--open {
+      padding-bottom: 1rem;
+    }
+  }
+
+  @at-root .accordion-with-input--open > .accordion-with-input__wrap {
+    height: auto;
+    overflow: visible;
+  }
+}

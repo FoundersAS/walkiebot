@@ -1,0 +1,75 @@
+@import 'slack-styles/_slack-colors';
+@import 'slack-styles/_slack-typography';
+@import 'slack-styles/_slack-animation';
+
+
+.modal-action-confirmation {
+  font-family: $font-family-slack;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+
+  background-color: rgba($color-gray-darkest, .4);
+
+  z-index: 1000;
+
+
+  &__container {
+    width: 560px;
+    box-shadow: 0 1px 10px rgba(0,0,0,.6);
+    border-radius: .25rem;
+    background-color: $color-white;
+    margin: 0 auto;
+    position: fixed;
+    transform: translateX(-50%);
+    top: 12%;
+    left: 50%;
+  }
+
+  &__close {
+    color: #555459;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    opacity: .25;
+    font-weight: 900;
+
+    transition: opacity .1s $easing;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    font-weight: 900;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin: .3rem 0;
+  }
+
+  &__header {
+    border-radius: 6px 6px 0 0;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #555459;
+    background-color: $color-modal-header-background;
+  }
+
+
+  &__content {
+    padding: 1rem 0 1rem 15px;
+    color: #555459;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1.5rem 1.2rem;
+  }
+}

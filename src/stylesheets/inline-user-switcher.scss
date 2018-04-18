@@ -1,0 +1,82 @@
+@import '_animation';
+@import '_colors';
+@import '_layers';
+
+.inline-user-switcher {
+  position: relative;
+  display: flex;
+
+  &__underlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $layer-8;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__avatars {
+    position: absolute;
+    left: 3rem;
+    top: -.3rem;
+    z-index: $layer-9;
+
+    display: flex;
+
+    padding: .3rem .4rem;
+
+    background-color: $color-white;
+
+    border-radius: 4px;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+    & .inline-user-switcher__avatar:last-child .message__avatar {
+      margin-right: 0;
+    }
+  }
+
+  &__avatar {
+    position: relative;
+    z-index: $layer-9;
+
+    cursor: pointer;
+  }
+
+  &__avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: darken($color-white, 10%);
+
+    font-size: 1.5rem;
+
+    padding-top: .2rem;
+    margin-right: .6rem;
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 4px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    transition: background-color .2s $easing,
+                color .2s $easing;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: $color-white;
+    }
+
+    &:before {
+      font-family: 'icomoon';
+      content: '\e900'
+    }
+  }
+}

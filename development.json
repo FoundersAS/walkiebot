@@ -1,0 +1,5 @@
+{
+  "MONGODB_URI": "localhost:27017/walkie",
+  "NODE_ENV": "development",
+  "APP_HOST": "http://localhost:8005"
+}

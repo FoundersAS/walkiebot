@@ -1,0 +1,85 @@
+@import '../colors';
+@import '../animation';
+
+.accordion-card {
+  &__title {
+    color: $color-gray-darker;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: .8rem 1rem .2rem 2.2rem;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition:
+        color .2s $easing;
+
+    &:before {
+      font-family: 'icomoon';
+      content: '\e901';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-gray-darker;
+      position: absolute;
+      left: .7em;
+      top: 1.1rem;
+
+      transform: rotate(-90deg);
+      transform-origin: center;
+
+      transition: transform .2s $easing;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-green;
+
+      &:before {
+        color: inherit;
+      }
+    }
+
+    @at-root .accordion-card--open > .accordion-card__title:before {
+      transform: rotate(0);
+    }
+  }
+
+  &__active-properties {
+    color: $color-gray-dark;
+    font-size: .85rem;
+    font-weight: 400;
+    position: absolute;
+    top: 3.15rem;
+    left: 2.3rem;
+
+    &:not(&--show) {
+      opacity: 0;
+    }
+  }
+
+  &__actions {
+    opacity: 0;
+    display: flex;
+    transition: opacity .2s $easing;
+
+    @at-root .accordion-card:hover & {
+      opacity: 1;
+    }
+  }
+
+  &__wrap {
+    overflow: hidden;
+    height: 0;
+    padding: 0 0 .5rem 2rem;
+  }
+
+  @at-root .accordion-card--open > .accordion-card__wrap {
+    height: auto;
+    overflow: visible;
+  }
+}

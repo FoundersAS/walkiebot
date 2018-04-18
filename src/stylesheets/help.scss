@@ -1,0 +1,86 @@
+$color-light: #F9F9F9;
+.help {
+  &__intro {
+    margin-bottom: 2rem;
+  }
+}
+
+.panel {
+  margin-bottom: 4rem;
+
+  &__item {
+    display: flex;
+    background-color: $color-light;
+    margin: 0 -2rem 1rem;
+    padding: 2rem;
+
+    &--column {
+      flex-direction: column;
+    }
+
+    &-section,
+    .shortcut {
+      font-weight: 600;
+      min-width: 8rem;
+      margin-right: 2rem;
+    }
+
+    &-text {
+      flex: 1;
+    }
+
+    .code__inline {
+      color: #333;
+      background-color: #FFF;
+      border-radius: 4px;
+      box-shadow:
+        0 .02rem .1rem 0 rgba(0,0,0,.3),
+        0 .2rem 1rem -.5rem rgba(0,0,0,.5);
+      padding: .3rem;
+      font-family: monospace;
+    }
+
+    .shortcut {
+      color: #333;
+      display: flex;
+      align-items: center;
+
+      -webkit-user-select: none;
+      user-select: none;
+
+      cursor: default;
+
+      &__btn {
+        background-color: #FFF;
+        border-radius: 4px;
+        box-shadow:
+          0 .02rem .1rem 0 rgba(0,0,0,.3),
+          0 .2rem 1rem -.5rem rgba(0,0,0,.5);
+        padding: 1rem;
+        margin: 0 .5rem;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      &--inline {
+        margin-left: .5rem;
+        margin-right: .2rem;
+        margin-top: -.1rem;
+        min-width: auto;
+        display: inline-flex;
+
+        @at-root .shortcut--inline .shortcut__btn {
+          padding: 0 .4rem .065rem;
+          margin: 0 .3rem;
+          font-size: .85rem;
+        }
+      }
+    }
+  }
+}

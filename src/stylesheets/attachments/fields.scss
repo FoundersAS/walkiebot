@@ -1,0 +1,32 @@
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.field {
+  width: 50%;
+  padding: 0 1rem .3rem 0;
+
+  &--long {
+    width: 100%;
+    padding: .3rem 1rem .3rem 0;
+
+    &__title {
+      margin-top: 4px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-right: 1rem;
+  }
+
+  &__value {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}

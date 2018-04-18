@@ -1,0 +1,272 @@
+[
+  {
+    "botId": "<%= botId %>",
+    "messageId": "<%= messageIds[0] %>",
+    "createdAt": 1507042917494.0,
+    "name": "Message #1",
+    "customId": "message-1",
+    "parents": [],
+    "bot": false,
+    "user": 0,
+    "actions": [
+      {
+        "type": "message",
+        "source": {},
+        "target": {
+          "messageId": "<%= messageIds[1] %>",
+          "action": "new-user-input"
+        }
+      }
+    ],
+    "slack": {
+      "text": "/giphy hotdog",
+      "time": "5:01 PM",
+      "attachments": [],
+      "reactions": [],
+      "delete": false,
+      "replace": false,
+      "ephemeral": true
+    },
+    "editing": false,
+    "creating": false
+  },
+  {
+    "botId": "<%= botId %>",
+    "messageId": "<%= messageIds[1] %>",
+    "createdAt": 1507043348425.0,
+    "name": "Message #1.0",
+    "customId": "message-1.0",
+    "parents": [],
+    "bot": true,
+    "user": 0,
+    "actions": [
+      {
+        "type": "click",
+        "source": {
+          "attachment": 0,
+          "action": 1
+        },
+        "target": {
+          "messageId": "<%= messageIds[2] %>",
+          "action": "replace"
+        }
+      },
+      {
+        "type": "click",
+        "source": {
+          "attachment": 0,
+          "action": 0
+        },
+        "target": {
+          "messageId": "delete.<%= messageIds[1] %>.05543697",
+          "action": "delete"
+        }
+      },
+      {
+        "type": "click",
+        "source": {
+          "attachment": 0,
+          "action": 0
+        },
+        "target": {
+          "messageId": "<%= messageIds[3] %>",
+          "action": "new-user-input"
+        }
+      },
+      {
+        "type": "click",
+        "source": {
+          "attachment": 0,
+          "action": 2
+        },
+        "target": {
+          "messageId": "delete.<%= messageIds[1] %>.96852786",
+          "action": "delete"
+        }
+      }
+    ],
+    "slack": {
+      "text": null,
+      "time": "5:09 PM",
+      "attachments": [
+        {
+          "title_link": "https://media.giphy.com/media/EyZlcqR7UPRN6/giphy.gif",
+          "fallback": "Pre-filled because you have actions in your attachment.",
+          "color": "#d2dde1",
+          "lastUpdated": 1507129493464.0,
+          "thumb_url": "",
+          "image_url": "https://media.giphy.com/media/EyZlcqR7UPRN6/giphy.gif",
+          "text": "",
+          "author_icon": "",
+          "author_link": "",
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "fields"
+          ],
+          "pretext": "",
+          "callback_id": "Pre-filled because you have actions in your attachment.",
+          "attachment_type": "default",
+          "title": "hotdog",
+          "fields": [],
+          "footer": "",
+          "footer_icon": "",
+          "actions": [
+            {
+              "text": "Send",
+              "name": "Send",
+              "value": "Send",
+              "style": "default",
+              "type": "button"
+            },
+            {
+              "text": "Shuffle",
+              "name": "Shuffle",
+              "value": "Shuffle",
+              "style": "default",
+              "type": "button"
+            },
+            {
+              "text": "Cancel",
+              "name": "Cancel",
+              "value": "Cancel",
+              "style": "default",
+              "type": "button"
+            }
+          ],
+          "attachmentId": 1,
+          "author_name": "",
+          "ts": ""
+        }
+      ],
+      "reactions": [],
+      "delete": false,
+      "replace": false,
+      "ephemeral": true
+    },
+    "editing": false,
+    "creating": false
+  },
+  {
+    "botId": "<%= botId %>",
+    "messageId": "<%= messageIds[2] %>",
+    "createdAt": 1507043411028.0,
+    "name": "Message #1.0.0",
+    "customId": "message-1.0.0",
+    "parents": [],
+    "bot": true,
+    "user": 0,
+    "actions": [],
+    "slack": {
+      "text": null,
+      "time": "5:10 PM",
+      "attachments": [
+        {
+          "title_link": "https://media0.giphy.com/media/pNMTzAKyZTWw0/giphy.gif",
+          "fallback": "Pre-filled because you have actions in your attachment.",
+          "color": "#d2dde1",
+          "lastUpdated": 1507043409307.0,
+          "thumb_url": "",
+          "image_url": "https://media0.giphy.com/media/pNMTzAKyZTWw0/giphy.gif",
+          "text": "",
+          "author_icon": "",
+          "author_link": "",
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "fields"
+          ],
+          "pretext": "",
+          "callback_id": "Pre-filled because you have actions in your attachment.",
+          "attachment_type": "default",
+          "title": "hotdog",
+          "fields": [],
+          "footer": "",
+          "footer_icon": "",
+          "actions": [
+            {
+              "text": "Send",
+              "name": "Send",
+              "value": "Send",
+              "style": "default",
+              "type": "button"
+            },
+            {
+              "text": "Shuffle",
+              "name": "Shuffle",
+              "value": "Shuffle",
+              "style": "default",
+              "type": "button"
+            },
+            {
+              "text": "Cancel",
+              "name": "Cancel",
+              "value": "Cancel",
+              "style": "default",
+              "type": "button"
+            }
+          ],
+          "attachmentId": 1,
+          "author_name": "",
+          "ts": ""
+        }
+      ],
+      "reactions": [],
+      "delete": false,
+      "replace": false,
+      "ephemeral": true
+    },
+    "editing": false,
+    "creating": false
+  },
+  {
+    "botId": "<%= botId %>",
+    "messageId": "<%= messageIds[3] %>",
+    "createdAt": 1507043428472.0,
+    "name": "Message #1.0.0",
+    "customId": "message-1.0.0",
+    "parents": [],
+    "bot": true,
+    "user": 0,
+    "actions": [],
+    "slack": {
+      "text": null,
+      "time": "5:10 PM",
+      "attachments": [
+        {
+          "title_link": "https://media.giphy.com/media/EyZlcqR7UPRN6/giphy.gif",
+          "fallback": "",
+          "color": "#d2dde1",
+          "lastUpdated": 1507043472406.0,
+          "thumb_url": "",
+          "image_url": "https://media.giphy.com/media/EyZlcqR7UPRN6/giphy.gif",
+          "text": "",
+          "author_icon": "",
+          "author_link": "",
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "fields"
+          ],
+          "pretext": "",
+          "callback_id": "",
+          "attachment_type": "default",
+          "title": "hotdog",
+          "fields": [],
+          "footer": "Posted using /giphy",
+          "footer_icon": "",
+          "actions": [],
+          "attachmentId": 1,
+          "author_name": "",
+          "ts": ""
+        }
+      ],
+      "reactions": [],
+      "delete": false,
+      "replace": false,
+      "ephemeral": false
+    },
+    "editing": false,
+    "creating": false
+  }
+]
