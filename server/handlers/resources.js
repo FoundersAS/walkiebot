@@ -1,7 +1,16 @@
 'use strict';
-let assets = {};
+const fs = require('fs');
+let assets = {
+  main: { js: '', css: '' },
+  commons: { js: '' }
+};
 
-if (process.env.NODE_ENV !== 'development') assets = require('../assets.json');
+try {
+  const file = fs.readFileSync('../assets.json');
+  if (file) assets = JSON.parse(file.toString());
+} catch (e) {
+  console.error('Could not find server/assets.json, you may get an error loading Walkie');
+}
 
 module.exports = {
   static: {
