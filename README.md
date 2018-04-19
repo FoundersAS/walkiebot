@@ -1,24 +1,42 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/FoundersAS/walkiebot)
-
-
 # Walkiebot
 
-    $ npm i
-    $ npm start dev
 
-    Start coding/hacking/WorkWork.
+
+Some articles about Walkie:
+* https://blog.founders.as/walkie-bloggie-postie-ff1938668605
+* https://blog.founders.as/walkie-announcement-sign-in-with-slack-and-more-56427dad9059
+* https://blog.founders.as/walkie-two-point-ooh-snap-5cef2bb8f274
+
+# Configuration
+
+This project uses [`load-environment`](https://www.npmjs.com/package/load-environment) to load config
+
+These are the available environment variables walkie uses:
+
+* `NGROK_SUBDOMAIN` only required locally with slack login enabled
+* `MONGODB_URI` a mongodb uri
+* `NPM_CONFIG_PRODUCTION` when deploying to heroku this should be false so `devDepencies` are installed
+* `JWT_PUBLIC` You can generate a keypair using the instructions here: https://gist.github.com/ygotthilf/baa58da5c3dd1f69fae9
+* `JWT_SECRET` For local development keep these files in your `local.json` file
+* `APP_HOST` used only locally and for generating some redirection urls related to logging in with slack
+* `HEROKU_APP_NAME` used only on heroku, it should be the same value as your heroku app name
+* `SLACK_CLIENT_ID` if this is not provided the sign in with slack button will not be shown in walkie
+* `SLACK_CLIENT_SECRET`
+* `SLACK_LOGIN_REDIRECT_URL`
+
+# Production
+
+Use the deploy to heroku button to easily deploy to heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/FoundersAS/walkiebot)
+
+Or if you're more into docker you can use `docker-compose`, the `docker-compose.yml` file is set up to build Walkie from the `Dockerfile` in the project root.
+
+# Development
+
+    $ yarn
+    $ yarn dev
 
 Open:
 * http://localhost:8005 for webpack
 * http://localhost:8000 for production server/api
-
-# Notes:
-
-## Load backup from mlabs into local env
-
-* Download mlabs dump
-* Run a local container for mongo: `docker run -it --name mlabs-mongo --rm -p 27019:27017 mongo:3.2`
-* Get address for previous container: `docker run  --rm  --link mlabs-mongo  -v `pwd`:/backup  mongo:3.2  bash -c "env" | grep MLABS_MONGO_PORT_27017_TCP_ADDR`
-* Use address instead of 172.17.0.3 with the next container
-* Run a container that links to the previous one and runs mongorestore: `docker run  --rm  --link mlabs-mongo:mongo  -v `pwd`:/backup  mongo:3.2  bash -c "mongorestore /backup --host 172.17.0.3"`
-* Now you can connect on `localhost:27019` :+1:
