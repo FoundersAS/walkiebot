@@ -8,6 +8,7 @@ services:
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/walkie
       - NODE_ENV=production
+      - APP_HOST=http://localhost:8000
     depends_on:
       - mongodb
   mongodb:
