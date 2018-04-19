@@ -5,4 +5,4 @@ node_modules/.bin/concurrently \
     "node devserver.js" \
     "npm run delay-api" \
     "npm run ngrok" \
-    "docker-compose up"
+    "docker-compose up mongodb"
