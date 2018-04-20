@@ -22,8 +22,8 @@
     "postinstall": "npm run build-prod",
     "start": "node ./server"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "kasper@founders.as",
+  "license": "ISC",
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.1",
     "autoprefixer": "^7.1.6",
