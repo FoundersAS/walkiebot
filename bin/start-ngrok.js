@@ -3,7 +3,10 @@ const ngrok = require('ngrok');
 
 let URL;
 
-if (!process.env.NGROK_SUBDOMAIN) throw new Error('NGROK_SUBDOMAIN not defined in environment');
+if (!process.env.NGROK_SUBDOMAIN) {
+  console.warn('WARNING: NGROK_SUBDOMAIN not defined in environment');
+  return;
+}
 
 ngrok.connect({
   addr: 8000,
