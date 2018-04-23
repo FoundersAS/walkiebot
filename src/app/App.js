@@ -128,8 +128,12 @@ class App extends React.Component {
   }
 
   exportData () {
+    const { teamBots, localBots } = this.props;
+    const teamBotsIds = teamBots.map(b => b.id);
+    const localBotsIds = localBots.bots.map(b => b.id);
+    const botIds = [...teamBotsIds, ...localBotsIds, this.props.meta.botId];
     this.setState({ exportLoading: true });
-    api.exportJson(this.props.meta.botId)
+    api.exportJson(botIds)
       .then(res => {
         const blob = new Blob([JSON.stringify(res.data.data)], { type: 'text/json' });
         const fileUrl = window.URL.createObjectURL(blob);

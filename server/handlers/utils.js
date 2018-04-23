@@ -39,32 +39,24 @@ const getOneBot = (botId, isAuthenticated, credentials, cb) => {
   });
 };
 const getManyBots = (botIds, isAuthenticated, credentials, cb) => {
-  db.localBots.get(botIds, (err, res) => {
-    if (err) return error(reply, err);
-    const bots = res.reduce((prev, curr) => {
-      const ids = Object.keys(curr.bots);
-      return [...prev, ...ids];
-    }, []);
+  let errors = [];
+  let results = [];
 
-    let errors = [];
-    let results = [];
-
-    getAllBots();
-    function getAllBots () {
-      const bot = bots.pop();
-      if (!bot) return cb(null, { results, errors });
-      getOneBot(bot, isAuthenticated, credentials, (err, result) => {
-        if (err) {
-          errors.push({ id: bot, message: err.message });
-        } else if (!result) {
-          errors.push({ id: bot, message: 'bot not found' });
-        } else {
-          results.push(result);
-        }
-        getAllBots();
-      });
-    }
-  });
+  getAllBots();
+  function getAllBots () {
+    const bot = botIds.pop();
+    if (!bot) return cb(null, { results, errors });
+    getOneBot(bot, isAuthenticated, credentials, (err, result) => {
+      if (err) {
+        errors.push({ id: bot, message: err.message });
+      } else if (!result) {
+        errors.push({ id: bot, message: 'bot not found' });
+      } else {
+        results.push(result);
+      }
+      getAllBots();
+    });
+  }
 };
 
 const rollback = (botId, err, cb) => {
@@ -125,55 +117,18 @@ module.exports = auth => ({
     handler: (request, reply) => reply('PONG')
   },
   export: {
-    method: 'GET',
+    method: 'POST',
     config: { auth },
-    path: '/api/utils/export/{botId}',
+    path: '/api/utils/export',
     handler: (request, reply) => {
       console.log(`[WALKIE][${request.method}][${request.url.path}]`);
-      const { db: rawDb } = db;
-      const { botId } = request.params;
-      const { localBotId } = request.query;
       const { isAuthenticated, credentials } = request.auth;
+      const { botIds } = request.payload;
 
-      let usersBotIds = [];
-      if (request.auth.user) {
-        usersBotIds = request.auth.user.localBotIds || [];
-      }
-      let ids = [...new Set([localBotId, ...usersBotIds])];
-
-      if (isAuthenticated) {
-        return rawDb.bots.find({
-          teamId: request.auth.user.team_id
-        }, {
-          id: 1,
-          _id: 0
-        }, (err, bots) => {
-          if (err) return error(reply, err);
-          ids = [...new Set([...ids, ...bots.map(b => b.id)])];
-
-          return getManyBots(ids, isAuthenticated, credentials, (err, data) => {
-            if (err) return error(reply, err);
-            if (!data.results) return reply({ ok: false, message: 'not found' }).code(404);
-
-            return reply({ ok: true, data: data.results, errors: data.errors });
-          });
-        });
-      }
-
-      if (localBotId) {
-        return getManyBots(ids, isAuthenticated, credentials, (err, data) => {
-          if (err) return error(reply, err);
-          if (!data.results) return reply({ ok: false, message: 'not found' }).code(404);
-
-          return reply({ ok: true, data: data.results, errors: data.errors });
-        });
-      }
-
-      return getOneBot(botId, isAuthenticated, credentials, (err, result) => {
+      return getManyBots(botIds, isAuthenticated, credentials, (err, data) => {
         if (err) return error(reply, err);
-        if (!result) return reply({ ok: false, message: 'not found' }).code(404);
-
-        return reply({ ok: true, data: [result], errors: [] });
+        if (!data.results) return reply({ ok: false, message: 'not found' }).code(404);
+        return reply({ ok: true, data: data.results, errors: data.errors });
       });
     }
   },
