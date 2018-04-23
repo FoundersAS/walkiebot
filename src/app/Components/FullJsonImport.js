@@ -37,6 +37,7 @@ class FullJsonImport extends React.Component {
 
   onClick () {
     const { contents, name } = this.state;
+    if (!contents) return;
     let localBotId;
     try {
       localBotId = localStorage.getItem('localBotId');
@@ -153,7 +154,7 @@ class FullJsonImport extends React.Component {
         />
         <div
           className={classNames('btn btn--small btn--primary', {
-            'btn--disabled': this.state.loading
+            'btn--disabled': this.state.loading || !this.state.contents
           })}
           onClick={this.onClick}
         >

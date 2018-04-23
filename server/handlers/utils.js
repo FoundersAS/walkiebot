@@ -67,10 +67,11 @@ const getManyBots = (botIds, isAuthenticated, credentials, cb) => {
   });
 };
 
-const rollback = (err, cb) => {
-  rawDb.bots.remove({ id: bot.id });
-  rawDb.stories.remove({ botId: bot.id });
-  rawDb.messages.remove({ botId: bot.id });
+const rollback = (botId, err, cb) => {
+  const { db: rawDb } = db;
+  rawDb.bots.remove({ id: botId });
+  rawDb.stories.remove({ botId: botId });
+  rawDb.messages.remove({ botId: botId });
   return cb(err);
 };
 const saveOneBot = (data, cb) => {
@@ -81,11 +82,11 @@ const saveOneBot = (data, cb) => {
     if (res) return cb(new Error(`Bot with id ${bot.id} already exists in database. Import aborted.`));
 
     rawDb.bots.insert(bot, (err) => {
-      if (err) return rollback(err, cb);
+      if (err) return rollback(bot.id, err, cb);
       rawDb.stories.insert(stories, (err) => {
-        if (err) return rollback(err, cb);
+        if (err) return rollback(bot.id, err, cb);
         rawDb.messages.insert(messages, (err) => {
-          if (err) return rollback(err, cb);
+          if (err) return rollback(bot.id, err, cb);
           return cb(null, bot.id);
         });
       });
@@ -103,7 +104,7 @@ const saveManyBots = (bots, cb) => {
     saveOneBot(bot, (err, result) => {
       if (err) {
         if (err.code === 11000) {
-          errors.push({ id: bot.bot.id, message: 'Duplicate bot found in database. Import aborted.' });
+          errors.push({ id: bot.bot.id, message: `Duplicate bot (${bot.bot.id}) found in database. Import aborted.` });
         }
         else {
           errors.push({ id: bot.bot.id, message: err.message });
