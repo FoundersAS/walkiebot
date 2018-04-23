@@ -3,6 +3,7 @@ import '../stylesheets/app.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import slug from 'slug';
 
@@ -12,8 +13,11 @@ import TeamSwitcher from './Components/TeamSwitcher';
 import Modal from './Components/Modals/Modal';
 import Loading from './Components/Loading';
 import Help from './Help';
+import FullJsonImport from './Components/FullJsonImport';
+import AvatarsLoader from './Components/Loaders/Avatars';
 
 import { errorHandler } from './utils/error-handler';
+import * as api from './utils/api';
 import { resetAttachments } from './redux/ducks/attachments';
 import { closeBuilder } from './redux/ducks/builder';
 import { resetMessageSettings } from './redux/ducks/message-settings';
@@ -57,14 +61,31 @@ class App extends React.Component {
     this.toggleUserList = this.toggleUserList.bind(this);
     this.toggleTeamList = this.toggleTeamList.bind(this);
     this.closeTeamAndUserList = this.closeTeamAndUserList.bind(this);
+
     this.showHelpOverlay = this.showHelpOverlay.bind(this);
     this.closeHelpOverlay = this.closeHelpOverlay.bind(this);
     this.closeHelpOverlayOnEscape = this.closeHelpOverlayOnEscape.bind(this);
 
+    this.showImportOverlay = this.showImportOverlay.bind(this);
+    this.closeImportOverlay = this.closeImportOverlay.bind(this);
+    this.closeImportOverlayOnEscape = this.closeImportOverlayOnEscape.bind(this);
+
+    this.showExportOverlay = this.showExportOverlay.bind(this);
+    this.closeExportOverlay = this.closeExportOverlay.bind(this);
+    this.closeExportOverlayOnEscape = this.closeExportOverlayOnEscape.bind(this);
+
+    this.exportData = this.exportData.bind(this);
+
     this.state = {
       showHelpOverlay: false,
+      showImportOverlay: false,
+      showExportOverlay: false,
       userListOpen: false,
-      teamListOpen: false
+      teamListOpen: false,
+
+      exportLoading: false,
+      exportFileUrl: null,
+      exportErrors: []
     };
   }
 
@@ -77,6 +98,51 @@ class App extends React.Component {
   }
   closeHelpOverlayOnEscape (e) {
     if (e.which === 27) this.closeHelpOverlay();
+  }
+
+  showImportOverlay () {
+    this.setState({ showImportOverlay: true, showExportOverlay: false });
+  }
+
+  closeImportOverlay () {
+    this.setState({ showImportOverlay: false });
+  }
+  closeImportOverlayOnEscape (e) {
+    if (e.which === 27) this.closeImportOverlay();
+  }
+
+  showExportOverlay () {
+    this.setState({ showExportOverlay: true, showImportOverlay: false });
+  }
+
+  closeExportOverlay () {
+    this.setState({
+      showExportOverlay: false,
+      exportLoading: false,
+      exportFileUrl: null,
+      exportErrors: []
+    });
+  }
+  closeExportOverlayOnEscape (e) {
+    if (e.which === 27) this.closeExportOverlay();
+  }
+
+  exportData () {
+    this.setState({ exportLoading: true });
+    api.exportJson(this.props.meta.botId)
+      .then(res => {
+        const blob = new Blob([JSON.stringify(res.data.data)], { type: 'text/json' });
+        const fileUrl = window.URL.createObjectURL(blob);
+        this.setState({
+          exportFileUrl: fileUrl,
+          exportErrors: res.data.errors,
+          exportLoading: false
+        });
+      })
+      .catch((err) => {
+        this.setState({ exportLoading: false });
+        errorHandler(err);
+      });
   }
 
   closeTeamAndUserList () {
@@ -261,6 +327,61 @@ class App extends React.Component {
             <Help />
           </Modal>
         )}
+        {this.state.showImportOverlay && (
+          <Modal
+            closeOnEscape={this.closeImportOverlayOnEscape.bind(this)}
+            onClick={this.closeImportOverlay}
+            title='Import JSON file from Walkie export'
+          >
+            <p>If you have done a full export of your bot, you can restore it here by navigating to the JSON file you downloaded and uploading it</p>
+            <FullJsonImport />
+          </Modal>
+        )}
+        {this.state.showExportOverlay && (
+          <Modal
+            closeOnEscape={this.closeExportOverlayOnEscape}
+            onClick={this.closeExportOverlay}
+            title='Export data'
+            >
+            <p>This will export all bots, stories and messages associated to your user and team (if you are logged in)</p>
+            {!this.state.exportFileUrl && (
+              <div>
+                {!this.state.exportLoading && (
+                  <a
+                    onClick={this.exportData}
+                    className={classNames('btn', {
+                      'btn--disabled': this.exportLoading
+                    })}
+                  >
+                    Export my data
+                  </a>
+                )}
+                <AvatarsLoader show={this.state.exportLoading} text='Crunching and collecting!' />
+              </div>
+            )}
+            {this.state.exportFileUrl && (
+              <a
+                className='btn btn--success'
+                download='walkie-data.json'
+                href={this.state.exportFileUrl}
+              >
+                Click here to download your data
+              </a>
+            )}
+            {this.state.exportErrors.length > 0 && (
+              <div>
+                <h3>There were {this.state.exportErrors.length} errors exporting your data</h3>
+                <h4>These bots will not be included in your download</h4>
+                {this.state.exportErrors.map(error => {
+                  return (
+                    <div key={error.id}>Bot with id {error.id}: {error.message}</div>
+                  );
+                })}
+              </div>
+            )}
+
+          </Modal>
+        )}
         <TeamSwitcher
           bots={this.state.userListOpen ? localBots.bots : teamBots}
           meta={meta}
@@ -271,6 +392,8 @@ class App extends React.Component {
           teamListOpen={this.state.teamListOpen}
           listOpen={this.state.userListOpen || this.state.teamListOpen}
           showHelpOverlay={this.showHelpOverlay}
+          showImportOverlay={this.showImportOverlay}
+          showExportOverlay={this.showExportOverlay}
           />
         {children}
         <div className='mobile-disclaimer'>

@@ -207,7 +207,7 @@ class Stories extends React.Component {
 
             {!shouldShowTeamWarning && (
               <div className='modal__custom-header'>
-                <div className='modal__custom-title' onClick={() => this.setState({ showAddBotModal: false })}>Add new local bot</div>
+                <div className='modal__custom-title'>Add new local bot</div>
                 <div className='modal__custom-subtitle'>Bot will be avalible on your local machine.</div>
               </div>
             )}

@@ -263,7 +263,9 @@ class TeamSwitcher extends React.Component {
       userListOpen,
       teamListOpen,
       listOpen,
-      showHelpOverlay
+      showHelpOverlay,
+      showImportOverlay,
+      showExportOverlay
     } = this.props;
 
     const isAnonContext = meta.teamDomain === 'anon' || !meta.teamDomain;
@@ -330,6 +332,18 @@ class TeamSwitcher extends React.Component {
             </div>
           </div>
           <div>
+            {meta.botId && (
+              <div className='team-switcher__item' onClick={showExportOverlay}>
+                <div className='team-switcher__item-icon icon-inbox' />
+                <div className='team-switcher__item-name'>
+                  export all walkie data
+                </div>
+              </div>
+            )}
+            <div className='team-switcher__item' onClick={showImportOverlay}>
+              <div className='team-switcher__item-icon icon-outbox' />
+              <div className='team-switcher__item-name'>import from Walkie export</div>
+            </div>
             <div className='team-switcher__item' onClick={showHelpOverlay}>
               <div className='team-switcher__item-icon icon-help' />
               <div className='team-switcher__item-name'>help</div>

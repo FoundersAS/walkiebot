@@ -11,7 +11,7 @@ module.exports = function (server) {
     slack: require('./slack'),
     resources: require('./resources'),
     users: require('./users'),
-    utils: require('./utils'),
+    utils: require('./utils')(authOptional),
     notifications: require('./notifications')(authOptional, server)
   };
 

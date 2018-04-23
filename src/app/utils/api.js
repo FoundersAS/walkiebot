@@ -95,3 +95,21 @@ export const getSystemNotifications = (userId) =>
 
 export const ackSystemNotification = (notificationId, userId) =>
   axios.put(`/api/notifications/${notificationId}/${userId}`, setAuthHeaders());
+
+export const exportJson = (botId) => {
+  const authHeaders = setAuthHeaders();
+  const localBotId = window.localStorage.getItem('localBotId');
+  let config = {
+    params: {
+      localBotId: localBotId ? localBotId : undefined
+    }
+  };
+  if (authHeaders) {
+    config = Object.assign(config, authHeaders);
+  }
+
+  return axios.get(`/api/utils/export/${botId}`, config);
+};
+
+export const importJson = data =>
+  axios.post('/api/utils/import', data, setAuthHeaders());
