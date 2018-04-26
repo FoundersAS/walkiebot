@@ -83,16 +83,28 @@ These are the available environment variables walkie uses:
 
 # Screenshots
 
-![Walkiebot Add Users](./_docs/screenshots/add-users.png)
+<a href="./_docs/screenshots/add-users.png">
+  <img src="./_docs/screenshots/add-users.png" width="400" />
+</a>
+
 Add as many users as you like to your stories for maximum interaction (and possibly confusion!)
 
-![Walkiebot Sidebar](./_docs/screenshots/sidebar.png)
+<a href="./_docs/screenshots/sidebar.png">
+  <img src="./_docs/screenshots/sidebar.png" width="400" />
+</a>
+
 The sidebar visualises how your conversation is structured and allows you to create new messages in reaction to others
 
-![Walkiebot message builder](./_docs/screenshots/message-builder.png)
+<a href="./_docs/screenshots/message-builder.png">
+  <img src="./_docs/screenshots/message-builder.png" width="400" />
+</a>
+
 The message builder help you design Slack messages with a live preview
 
-![Walkiebot Export to JSON](./_docs/screenshots/export-to-json.png)
+<a href="./_docs/screenshots/export-to-json.png">
+  <img src="./_docs/screenshots/export-to-json.png" width="400" />
+</a>
+
 Export any message to a valid Slack message payload
 
 # Contributors
