@@ -2,15 +2,15 @@
 
 Walkiebot is the premier solution for prototyping conversational flows, and visualising what a message will look like in [Slack](https://api.slack.com/best-practices/storyboarding) - it features a WYSIWYG editor for creating and editing messages
 
-## Table of Contents
+## Table of Content
 
-- [Requirements](#requirements)
-- [Configuration](#configuration)
+- [Quickstart](#quickstart)
 - [Production](#production)
   - [Heroku](#heroku)
   - [Docker](#docker)
-- [Development](#development)
-- [Thanks](#thanks)
+- [Configuration](#configuration)
+- [Screenshots](#screenshots)
+- [Contributors](#contributors)
 
 Some articles we wrote about Walkie:
 * https://blog.founders.as/walkie-bloggie-postie-ff1938668605
@@ -81,8 +81,32 @@ These are the available environment variables walkie uses:
 * `SLACK_CLIENT_SECRET`
 * `SLACK_LOGIN_REDIRECT_URL`
 
-# Thanks
+# Screenshots
+
+![Walkiebot Add Users](./_docs/screenshots/add-users.png)
+Add as many users as you like to your stories for maximum interaction (and possibly confusion!)
+
+![Walkiebot Sidebar](./_docs/screenshots/sidebar.png)
+The sidebar visualises how your conversation is structured and allows you to create new messages in reaction to others
+
+![Walkiebot message builder](./_docs/screenshots/message-builder.png)
+The message builder help you design Slack messages with a live preview
+
+![Walkiebot Export to JSON](./_docs/screenshots/export-to-json.png)
+Export any message to a valid Slack message payload
+
+# Contributors
 
 Thank you to all of you who are and have been using and helping improve Walkie!
 
+* [@madshensel](https://github.com/madshensel)
+* [@joshuakarjala](https://github.com/joshuakarjala)
+* [@freeall](https://github.com/freeall)
+* [@sorribas](https://github.com/sorribas)
+* [@dinoshauer](https://github.com/dinoshauer)
+
 ![Walkiebot Footer](./_docs/resources/walkie-footer.png)
+
+# License
+
+ISC
