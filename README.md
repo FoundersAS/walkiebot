@@ -115,6 +115,7 @@ Thank you to all of you who are and have been using and helping improve Walkie!
 * [@joshuakarjala](https://github.com/joshuakarjala)
 * [@freeall](https://github.com/freeall)
 * [@sorribas](https://github.com/sorribas)
+* [@mraaroncruz](https://github.com/mraaroncruz)
 * [@dinoshauer](https://github.com/dinoshauer)
 
 ![Walkiebot Footer](./_docs/resources/walkie-footer.png)
