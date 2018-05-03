@@ -72,7 +72,7 @@
     "flat": "^2.0.1",
     "flatten-obj": "^3.0.0",
     "h2o2": "^5.2.0",
-    "hapi": "^13.5.0",
+    "hapi": "^13.5.2",
     "hapi-auth-jwt2": "^7.2.4",
     "hapi-heroku-helpers": "^3.0.0",
     "immutable": "^3.8.1",
