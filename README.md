@@ -5,6 +5,9 @@ Walkiebot is the premier solution for prototyping conversational flows, and visu
 ## Table of Content
 
 - [Quickstart](#quickstart)
+- [Export and import](#export-and-import)
+  - [Exporting your data](#exporting-your-data)
+  - [Importing your data](#importing-your-data)
 - [Production](#production)
   - [Heroku](#heroku)
   - [Docker](#docker)
@@ -40,6 +43,26 @@ In any setup explained here mongodb is included.
 When developing locally with `yarn dev` docker-compose is used to manage the mongodb, on heroku a free mlabs mongodb addon is provisioned automatically.
 
 In case you want to use authentication you will need to set up a slack application, you can do that here: [api.slack.com/apps](https://api.slack.com/apps) - JWT is used for authorisation so you'll need to generate a keypair and add the keys as environment variables (more on that in [Configuration](#Configuration)), but here is a [quick link with instructions](https://gist.github.com/ygotthilf/baa58da5c3dd1f69fae9)
+
+# Export and import
+
+If you are here as a previous walkie user and you are thinking: "How on earth will I get my data from app.walkiebot.co on to my own walkie instance?" This is the section for you!
+
+## Exporting your data
+
+1. On https://app.walkiebot.co/ - Click the 'export all walkie data' button in the sidebar.
+2. Click the 'Export my data' button and give it a second
+3. Now click the big green button. And a download will start.
+4. You now have your walkie data saved on your computer!
+
+## Importing your data
+
+1. So you have your `walkie-data.json` file somewhere
+2. On your own Walkie instance, click the 'import from Walkie export'
+3. Click 'Choose file' and locate your `walkie-data.json` export
+4. Click 'Upload'
+5. You should get a message saying that your bots were imported with a list of links
+6. You can also find all your bots in the bot list in the sidebar
 
 # Production
 
