@@ -33,7 +33,7 @@ module.exports = {
     },
     handler: (request, reply) => {
       console.log(`[WALKIE][${request.method}][${request.url.path}]`);
-      doOauthRequest('https://walkiebot.ngrok.io/slack/add', request.query.code)
+      doOauthRequest('https://${process.env.NGROK_SUBDOMAIN}/slack/add', request.query.code)
         .then(data => {
           if (!data.ok) throw new Error(data.error);
 
