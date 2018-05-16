@@ -109,6 +109,12 @@ const saveManyBots = (bots, cb) => {
   }
 };
 
+const payloadOptions = {
+  payload: {
+    maxBytes: Number.MAX_SAFE_INTEGER
+  }
+};
+
 module.exports = auth => ({
   ping: {
     method: 'GET',
@@ -118,7 +124,7 @@ module.exports = auth => ({
   },
   export: {
     method: 'POST',
-    config: { auth },
+    config: { auth, ...payloadOptions },
     path: '/api/utils/export',
     handler: (request, reply) => {
       console.log(`[WALKIE][${request.method}][${request.url.path}]`);
@@ -134,7 +140,7 @@ module.exports = auth => ({
   },
   import: {
     method: 'POST',
-    config: { auth },
+    config: { auth, ...payloadOptions },
     path: '/api/utils/import',
     handler: (request, reply) => {
       console.log(`[WALKIE][${request.method}][${request.url.path}]`);
