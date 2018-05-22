@@ -12,6 +12,7 @@ Walkiebot is the premier solution for prototyping conversational flows, and visu
   - [Heroku](#heroku)
   - [Docker](#docker)
 - [Configuration](#configuration)
+  - [JWT tokens](#jwt-tokens)
 - [Screenshots](#screenshots)
 - [Contributors](#contributors)
 
@@ -104,6 +105,10 @@ These are the available environment variables walkie uses:
 * `SLACK_CLIENT_SECRET`
 * `SLACK_LOGIN_REDIRECT_URL`
 
+## JWT tokens
+
+Please see [this comment for clarification](https://github.com/FoundersAS/walkiebot/pull/2#issuecomment-389598431) thanks to [@alexagranov](https://github.com/alexagranov)
+
 # Screenshots
 
 <a href="./_docs/screenshots/add-users.png">
@@ -140,6 +145,7 @@ Thank you to all of you who are and have been using and helping improve Walkie!
 * [@sorribas](https://github.com/sorribas)
 * [@mraaroncruz](https://github.com/mraaroncruz)
 * [@dinoshauer](https://github.com/dinoshauer)
+* [@alexagranov](https://github.com/alexagranov)
 
 ![Walkiebot Footer](./_docs/resources/walkie-footer.png)
 
