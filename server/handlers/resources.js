@@ -1,12 +1,13 @@
 'use strict';
 const fs = require('fs');
+const path = require('path');
 let assets = {
   main: { js: '', css: '' },
   commons: { js: '' }
 };
 
 try {
-  const file = fs.readFileSync('../assets.json');
+  const file = fs.readFileSync(path.join(__dirname, '../assets.json'));
   if (file) assets = JSON.parse(file.toString());
 } catch (e) {
   console.error('Could not find server/assets.json, you may get an error loading Walkie');
