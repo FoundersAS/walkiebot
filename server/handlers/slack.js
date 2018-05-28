@@ -95,7 +95,7 @@ module.exports = {
             data.user,
             {
               access_token: data.access_token,
-              scope: data.scope.split(','),
+              scope: data.scope ? data.scope.split(',') : [],
               lastLogin: new Date()
             }
           );
