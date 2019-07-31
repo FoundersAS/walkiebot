@@ -1,5 +1,6 @@
 ---
 version: '3.3'
+
 services:
   web:
     build: .
@@ -15,3 +16,10 @@ services:
     image: mongo:3.6
     ports:
       - 27017:27017
+    volumes:
+      - "mongo_config:/data/configdb"
+      - "mongo_data:/data/db"
+
+volumes:
+  mongo_config:
+  mongo_data:
