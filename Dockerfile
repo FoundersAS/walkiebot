@@ -1,5 +1,5 @@
 # source: https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
-FROM node:carbon
+FROM node:10-buster
 
 # Create app directory
 WORKDIR /usr/src/app
