@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongodb
   mongodb:
-    image: mongo:3.6
+    image: mongo:4.0
     ports:
       - 27017:27017
     volumes:
