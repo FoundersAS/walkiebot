@@ -3,7 +3,17 @@ require('load-environment');
 
 const Hapi = require('hapi');
 
-const server = new Hapi.Server();
+const server = new Hapi.Server({
+  connections: {
+    routes: {
+      state: {
+        parse: false,
+        failAction: 'ignore'
+      }
+    }
+  }
+});
+
 const accessControl = require('./modules/access-control');
 
 const JWT_PUBLIC = process.env.JWT_PUBLIC && process.env.JWT_PUBLIC.replace(/\\n/g, '\n');
